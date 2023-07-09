@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+
+<head>
+    <meta charset="UTF-8">
+    <title>Speech Denoising in Python</title>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles/index.css') }}" />
+
+	<!-- Latest compiled and minified Bootstrap CSS -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <style>
+        body {
+          margin: 220px;   /*внешний отступ для всех сторон*/
+        }
+      </style>
+</head>
+<body>
+    <h1>ШУМА.точка.НЕТ </h1>
+    <br><br>
+    <h3>Шаг 1 - Давай запишем аудио</h3>
+    <br>
+    <div style="max-width: 28em;">
+		<p>Convert recorded audio to wav:</p>
+
+		<select id="encodingTypeSelect">
+		  <option value="wav">Waveform Audio (.wav)</option>
+		</select>
+		<div id="controls">
+			<button id="recordButton">Record</button>
+			<button id="stopButton" disabled>Stop</button>
+		</div>
+		<div id="formats"></div>
+		<!-- <pre>Log</pre> -->
+		<pre id="log"></pre>
+        <br>
+        <h3>Шаг 2 - Теперь ты можешь скачать своё аудио и послушать его! </h3> 
+		
+		<ol id="recordingsList"></ol>
+	</div>
+
+    <div id="speechContainer">
+        <br>
+        <h3>Шаг 3 - Время загрузить получившийся .wav файл</h3> 
+
+        <form method="post" enctype="multipart/form-data">
+            <input type="file" name="file"/>
+            <br>
+
+            <br>
+            <h3>Шаг 4 - Очистим аудио </h3> 
+            <input type="submit" id="submitButton" value="DENOISE"/>
+        </form>
+
+        {% if path != "" %}
+            <div id="speechTranscriptContainer">
+                <h1 align ="center">Вот и исходник</h1> 
+                <p id="speechText">{{ transcript }}</p> 
+                <!-- <audio src="{{ url_for('static', filename='audio/7268.wav') }}" autoplay>
+                    <a href="{{ url_for('static', filename='audio/7268.wav') }}">Download OGG audio</a>.
+                  </audio> -->
+                  <audio src= "{{path}}" controls="controls"></audio>
+                <h1 align ="center">А тут мы его почистили</h1>
+                <!-- <p id="speechText">{{ transcript }}</p> -->
+                <!-- <audio src="{{ url_for('static', filename='audio/7268.wav') }}" autoplay>
+                <a href="{{ url_for('static', filename='audio/7268.wav') }}">Download OGG audio</a>.
+                  </audio> -->
+                      <audio src="{{path1}}" controls="controls"></audio>
+    
+            </div>
+        {% endif %}
+
+    </div>
+
+    <!-- inserting these scripts at the end to be able to use all the elements in the DOM -->
+    <script src="{{ url_for('static', filename='js/WebAudioRecorder.min.js') }}" ></script>
+    <script src="{{ url_for('static', filename='js/app.js') }}" ></script>
+
+</body>
+</html>
