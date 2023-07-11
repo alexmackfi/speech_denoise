@@ -1,5 +1,5 @@
 html {
-  font-size: 100%;
+  font-size: 150%;
 }
 body {
   line-height: 1.5;
@@ -16,13 +16,16 @@ h1 {
   text-underline-offset: 6px;
   font-size: 220%;
   font-weight: bold;
-}
+
+} 
 
 h2 {
   font-weight: bold;
   color: #005A9C;
-  font-size: 140%;
-  text-transform: uppercase;
+  font-size: 80%;
+  border: 2px dashed #ed341d;
+
+  /* text-transform: uppercase; */
 }
 
 p {
@@ -52,6 +55,17 @@ a:visited {
   color: #8d75a3;
 }
 
+.button-container-div {
+  text-align: center;
+} 
+
+.result-container-div {
+  text-align: center;
+  border: 2px solid #ed341d;
+  padding: 5px;
+  /* height: 40vh; */
+}
+
 #controls {
   display: flex;
   margin-top: 2rem;
@@ -69,7 +83,7 @@ button {
   display: flex;
   justify-content: center;
   align-items: center;
-  color:#ffffff;
+  color:#000000;
   font-weight: bold;
   font-size: 1rem;
 }
@@ -107,12 +121,12 @@ li {
 
 
 #speechContainer {
-  margin: 20px;
+  margin: 0px;
 }
 
 #submitButton {
-  background-color: #0191FE;
-  color: white;
+  background-color: #ed341d;
+  color: rgb(0, 0, 0);
   border-radius: 5px;
   border: none;
   padding: 10px 30px;
@@ -123,8 +137,9 @@ li {
   cursor: pointer;
 }
 
-#speechTranscriptContainer {
-  margin-top: 20px;
+#speechTranscriptContainer { 
+  margin-top: 5px;
+  /* margin: 220px;  */
 }
 
 #speechText {

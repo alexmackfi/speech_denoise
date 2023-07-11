@@ -54,6 +54,9 @@ def index():
             path =  "../static/audio/noisy/" + file_name
             noisyAudio, sr = utils.read_audio(path[3:], sample_rate=utils.config['fs'])
             # sf.write(path[3:]+file_name,noisyAudio,sr)
+
+            model_name = request.form.get('select')
+
             noiseAudioFeatureExtractor = FeatureExtractor(noisyAudio, 
                                                           windowLength=utils.config['windowLength'], 
                                                           overlap=utils.config['overlap'], 
@@ -61,13 +64,18 @@ def index():
             noise_stft_features = noiseAudioFeatureExtractor.get_stft_spectrogram()
             noisyPhase = np.angle(noise_stft_features)
             noise_stft_features = np.abs(noise_stft_features)
-            predictors = utils.prepare_input_features_inference(noise_stft_features)
+            predictors = utils.prepare_input_features_inference(noise_stft_features, model_name)
             predictors = np.reshape(predictors, (predictors.shape[0], predictors.shape[1], 1, predictors.shape[2]))
             predictors = np.transpose(predictors, (3, 2, 0, 1)).astype(np.float32)
             predictors = (torch.from_numpy(predictors))
 
-            model = sm.MyModel22()
-            model_path = 'sources/model_weight/model22_1.pth'
+            if model_name == 'MyModel':
+                model = sm.MyModel23() 
+                model_path = 'sources/model_weight/best_cheap_9.pth' 
+            else: 
+                model = sm.MyModel22()
+                model_path = 'sources/model_weight/model22_3.pth' 
+            
             model.load_state_dict(torch.load(model_path,map_location=torch.device('cpu'))) 
 
             STFTFullyConvolutional = model(predictors)
@@ -79,7 +87,8 @@ def index():
             # print(denoisedAudioFullyConvolutional.shape)  
 
 
-    return render_template('index.html', transcript=transcript, path = path , path1 = path1)
+    return render_template('index.html', path = path , path1 = path1)
+ 
 
 
 if __name__ == "__main__":

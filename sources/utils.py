@@ -49,7 +49,11 @@ def add_noise_to_clean_audio(clean_audio, noise_signal):
     return noisyAudio
 
 
-def prepare_input_features_inference(stft_features):
+def prepare_input_features_inference(stft_features,name):
+
+    if name == "MyModel":
+        numSegments = 8
+    else: numSegments = 16
     
     noisySTFT = np.concatenate([stft_features[:,0:numSegments-1], stft_features], axis=1)
     stftSegments = np.zeros((numFeatures, numSegments , noisySTFT.shape[1] - numSegments + 1))
