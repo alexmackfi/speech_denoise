@@ -5,7 +5,8 @@
 3) source venv/Scripts/activate
 4) pip install -r requirements.txt 
 5) python wsgi.py
-<b>Также запустить сервис можно при помощи технологии Docker:</b><br><br>
+<b>
+Также запустить сервис можно при помощи технологии Docker:</b><br><br>
 Склонируйте репрзиторий на свой ПК следующей командой: <br>
 <code> git clone https://github.com/alexmackfi/speech_denoise.git </code> <br>
 Перейдите в папку с проектом:<br>
