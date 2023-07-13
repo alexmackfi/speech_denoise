@@ -7,7 +7,7 @@
 5) python wsgi.py
 <b>
 Также запустить сервис можно при помощи технологии Docker:</b><br><br>
-Склонируйте репрзиторий на свой ПК следующей командой: <br>
+Склонируйте репозиторий на свой ПК следующей командой: <br>
 <code> git clone https://github.com/alexmackfi/speech_denoise.git </code> <br>
 Перейдите в папку с проектом:<br>
 <code> cd speech_denoise </code><br>
