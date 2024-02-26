@@ -20,5 +20,5 @@
 <code> docker run -d -p 5000:5000 tort </code> <br>
 Перейдите по ссылке http://localhost:5000 <br><br>
 
-Обучение моделей, [описание проведенных экспериментов](https://github.com/alexmackfi/speech_denoise/blob/main/training/отчет.pdf) и [презентация проекта](https://github.com/alexmackfi/speech_denoise/blob/main/training/presentation.pdf) находятся в папке trainig <br>
+Обучение моделей, описание проведенных экспериментов и [презентация проекта](https://github.com/alexmackfi/speech_denoise/blob/main/training/presentation.pdf) находятся в папке [trainig](https://github.com/alexmackfi/speech_denoise/blob/main/training) <br>
    
